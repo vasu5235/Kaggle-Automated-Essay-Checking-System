@@ -119,24 +119,19 @@ def Evaluate(X_all,y_all,feature_list):
                      
             final_train_data = X_train[feature_list]
             final_test_data = X_test[feature_list]
-            
+                     
             model.fit(final_train_data,y_train)
             start = time()
             y_pred = model.predict(final_test_data)
             end = time()
-
-            #print ("Made predictions in {:.4f} seconds.".format(end - start))
-            print(y_pred[:5])
+                                   
             result = kappa(y_test.values,y_pred,weights='quadratic')
             results.append(result)
-            #print y_test,np.around(y_pred,decimals=2)
+            
             X_test_list = [i for i in range(len(X_test))]
             plt.scatter(X_test_list,y_test.values,color='black')
             plt.scatter(X_test_list,y_pred,color='blue')
-            #print len(X_test),len(y_test),len(y_pred)
-            #probas = model.fit(train[traincv], target[traincv]).predict_proba(train[testcv])
             
-
     #print "Results: " + str( np.array(results).mean() )
     return str(np.array(results).mean())
 
