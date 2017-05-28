@@ -29,4 +29,8 @@ The linear regression model uses a Word2Vec model and custom generated heuristic
 7.** Dataset : domain123.csv  **
 - ** Images and saved models : ```./model_and_visualization/```**   
 - ** References : ```./References/ **```  
+<<<<<<< HEAD
 - ** Essay set description : ```./Essay_Set_Descriptions``` **
+=======
+- ** Essay set description : ```./Essay_Set_Descriptions``` **
+>>>>>>> 067f935d810b18fc14c06031678015e8ae500251
