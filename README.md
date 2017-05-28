@@ -1,18 +1,17 @@
-# Kaggle-Automated-Essay-Checking-System
+# Kaggle-Automated-Essay-Checking-System  
 My attempt for the Kaggle AES project (https://www.kaggle.com/c/asap-aes)
 The linear regression model uses a Word2Vec model and custom generated heuristic features to obtain a mean-quadratic-weighted-kappa score of 0.9359.
 
-### Notebooks: 
+### Notebooks:  
 1. CustomFeatureGeneration.ipynb - Generating custom features for the data set.
 2. Data_Exploration.ipynb - Exploring the data set and free form visualization.
-3. Linear Regression Model.ipynb - The model building and learning takes place here.
+3. Linear Regression Model.ipynb - The model building and learning takes place here.  
 
-### Helper functions and required library import:
-./utils/helperfunctions.py
-./utils/requirements.py
+### Helper functions and required library import:  
+./utils/helperfunctions.py  
+./utils/requirements.py  
 
-###Libraries used for the Capstone Project:
-
+### Libraries used for the Capstone Project:  
 1. Scikit-learn 0.18.1: pip install --user --upgrade sklearn
 2. Gensim 2.1.0: pip install --user --upgrade gensim
 3. Textmining 1.0: pip install --user --upgrade textmining
@@ -27,8 +26,7 @@ The linear regression model uses a Word2Vec model and custom generated heuristic
 - You also need Java installed on your machine to run NLTK.
   Java installation steps for Ubuntu 16.04 : (http://www.wikihow.com/Install-Oracle-Java-on-Ubuntu-Linux)
 
-7. Dataset : domain123.csv
-
-** Images and saved models : ./model_and_visualization/
-   References : ./References/
-   Essay set description : ./Essay_Set_Descriptions**
+7.** Dataset : domain123.csv  **
+- ** Images and saved models : ```./model_and_visualization/```**   
+- ** References : ```./References/ **```  
+- ** Essay set description : ```./Essay_Set_Descriptions``` **
