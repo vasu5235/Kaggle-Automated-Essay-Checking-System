@@ -3,7 +3,7 @@ from requirements import *
 #Helper functions for preprocessing, generating custome heuristic features and Word2Vec features
 
 def preprocess_data2feature(X,target_col):
-    
+    # Generate feature columns for 15 custom features and a target value column    
     feature_columns = ["essay","word_count","long_word_count","avg_word_length_per_essay","wrong_words","no_of_domain_words","word_to_sent_ratio","num_of_characters","sentence_count","noun_count","verb_count","comma_count","punctuation_count","adjective_count","adverb_count","quotation_mark_count","spelling_mistakes","target"]
     feature_pd = pd.DataFrame(index = X.index, columns = feature_columns)
     feature_pd['essay'] = X['essay']
@@ -12,7 +12,7 @@ def preprocess_data2feature(X,target_col):
     return feature_pd
 
 def featureSet2(X): 
-    
+    # Extract features from the given essay and assign the value/count to the respective column.
     for index,row in X.iterrows():
         
         text = unicode(row['essay'],errors='ignore') 
@@ -108,6 +108,10 @@ def GenerateFeatures(X):
 #Using LinearRegression, 5 fold cross validation and quadratic kappa as an error metric.
 
 def Evaluate(X_all,y_all,feature_list):
+    
+    #Fitting, predicting and calculating error. 
+    #Using LinearRegression, 5 fold cross validation and quadratic kappa as an error metric.
+    
     model = LinearRegression()
 
     #Simple K-Fold cross validation. 5 folds.
@@ -137,6 +141,7 @@ def Evaluate(X_all,y_all,feature_list):
 
 #Word2Vec modules
 def essay_to_wordlist(essay_v, remove_stopwords):
+    # Remove the tagged labels and word tokenize the sentence.
     essay_v = re.sub("[^a-zA-Z]", " ", essay_v)
     words = essay_v.lower().split()
     if remove_stopwords:
@@ -145,6 +150,7 @@ def essay_to_wordlist(essay_v, remove_stopwords):
     return (words)
 
 def essay_to_sentences(essay_v, remove_stopwords):
+    # Sentence tokenize the essay and call essay_to_wordlist() for word tokenization.
     tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
     raw_sentences = tokenizer.tokenize(essay_v.strip())
     sentences = []
@@ -154,6 +160,7 @@ def essay_to_sentences(essay_v, remove_stopwords):
     return sentences
 
 def makeFeatureVec(words, model, num_features):
+    # Helper function for generating word vectors.
     featureVec = np.zeros((num_features,),dtype="float32")
     nwords = 0.
     index2word_set = set(model.wv.index2word)
@@ -165,6 +172,7 @@ def makeFeatureVec(words, model, num_features):
     return featureVec
 
 def getAvgFeatureVecs(essays, model, num_features):
+    #Main function to generate the word vectors for word2vec model.
     counter = 0
     essayFeatureVecs = np.zeros((len(essays),num_features),dtype="float32") # len(essays) X num_features matrix
     for essay in essays:
